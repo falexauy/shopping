@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Store Management Interface</title>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+  <script src="javascripts/app.js"></script>
+</head>
+<body  ng-app="shopping" ng-controller="MainCtrl" style="background-color:#99ccff"><center>
+<div style="margin-left: 5em;" >
+<h1 style="color:Black"> Store Management Interface </h1>
+<form ng-submit="addProduct()">
+  Product Name: <input type="text" ng-model="formProductName"></input> <br>
+  Price: <input type="text" ng-model="formPrice"></input> <br>
+  Picture URL: <input type="text" ng-model="formURL"></input> <br>
+    <button  type="submit">Add Product</button>
+</form>
+
+<h1 style="color:Black">Current Products</h1>
+
+<div ng-repeat="storeproduct in storeproducts | orderBy:['name']">
+<span class="glyphicon glyphicon-remove" ng-click="delete(storeproduct)"></span>
+  <span style="border: 2px solid black;" >{{storeproduct.name}} Price: {{storeproduct.price}} - ordered {{storeproduct.orders}} 
+  </span>
+  <img src="{{storeproduct.url}}" height=100px width=100px>
+</div>
+</center>
+
+</body>
+</html>
